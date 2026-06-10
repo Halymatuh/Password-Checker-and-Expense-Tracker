@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """
 expense_loop.py
-
-Keeps asking for expenses until you type 'done'.
-Then summarizes everything with totals by category.
-All amounts in Naira (₦).
 """
 
 from datetime import datetime
@@ -17,21 +13,21 @@ def get_amount():
             amount = float(input("  amount (₦): "))
             if amount > 0:
                 return amount
-            print("    gotta be more than zero")
+            print("    number should be more than zero")
         except ValueError:
-            print("    that's not a number")
+            print("    that is not a number")
 
 
 def get_category():
     """ask for category or let user type custom"""
-    print("  categories: food, transport, rent, bills, fun, other")
+    print("  Categories: Food, Transport, Rent, Bills, Fun, Other")
     category = input("  category: ").strip().lower()
     return category if category else "other"
 
 
 def get_date():
     """ask for date or use today"""
-    date_str = input("  date (YYYY-MM-DD) or press enter for today: ").strip()
+    date_str = input("  Date (YYYY-MM-DD) or press enter for today: ").strip()
     if not date_str:
         return datetime.now().strftime('%Y-%m-%d')
     try:
@@ -45,11 +41,11 @@ def get_date():
 def main():
     print()
     print("-" * 50)
-    print("  EXPENSE TRACKER")
+    print("  EXPENSE TRACKER  ")
     print("-" * 50)
     print()
-    print("add expenses one by one")
-    print("type 'done' as the category when finished")
+    print("Add expenses one by one")
+    print("Type 'done' as the category when finished")
     print()
 
     expenses = []
@@ -87,7 +83,7 @@ def main():
 
     if not expenses:
         print()
-        print("  no expenses entered")
+        print("  No Expenses Entered")
         print()
         return
 
@@ -97,8 +93,8 @@ def main():
         total += e['amount']
 
     print()
-    print(f"  total expenses: ₦{total:,.2f}")
-    print(f"  number of entries: {len(expenses)}")
+    print(f"  Total Expenses: ₦{total:,.2f}")
+    print(f"  Number of Entries: {len(expenses)}")
 
     # group by category using a dictionary
     by_category = {}
