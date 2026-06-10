@@ -55,7 +55,7 @@ def check_common(password):
     lower = password.lower()
     for bad in common:
         if bad in lower or lower in bad:
-            return -2, f"too common - '{bad}' is a terrible password"
+            return -2, f"too common - '{bad}' a terrible password"
     return 0, "not a common password"
 
 
@@ -112,38 +112,38 @@ def main():
     print("  PASSWORD STRENGTH CHECKER")
     print("-" * 50)
     print()
-    print("type a password to check (won't be saved anywhere)")
+    print("Type a password to check (won't be saved)")
     print("type 'quit' to exit")
     print()
 
     while True:
-        password = input("password: ")
+        password = input("Password: ")
 
-        if password.lower() == 'quit':
+        if password.lower() == 'Quit':
             print()
-            print("stay safe out there!")
+            print("Stay safe out there!")
             break
 
         if not password:
-            print("  c'mon, type something")
+            print("  Lets go, type something")
             continue
 
         score, feedback = evaluate_password(password)
         label, description = get_strength_label(score)
 
         print()
-        print(f"  score: {score}/8")
-        print(f"  strength: {label}")
+        print(f"  Score: {score}/8")
+        print(f"  Strength: {label}")
         print(f"  ({description})")
 
         if feedback:
             print()
-            print("  tips to improve:")
+            print("  Tips to improve:")
             for tip in feedback:
                 print(f"    - {tip}")
         else:
             print()
-            print("  no issues found - nice work!")
+            print("  No issues found - nice work!")
 
         print()
         print("-" * 50)
